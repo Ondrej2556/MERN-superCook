@@ -118,8 +118,26 @@ const deleteRecipe = async (req,res) => {
 //@route /api/recipes/saved
 //@method GET
 //@access private
-const savedRecipes = (req, res) => {
-    res.send("save it")
+const savedRecipes = async (req, res) => {
+    try {
+        const user = await User.findOne({_id:req.user._id})
+
+        if(!user){
+            res.status(404)
+            throw new Error('User doesnt exist.')
+        }
+        
+        const savedRecipes = await Recipe.find({author: req.user._id})
+
+        if(!savedRecipes){
+            res.status(500)
+            throw new Error('Something went wrong...')
+        }
+
+        res.status(200).json(savedRecipes)
+    } catch (error) {
+        res.json(error.message)
+    }
 
 }
 
