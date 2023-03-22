@@ -1,16 +1,96 @@
-html{
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
+html,body{
     background-color: #1F1F23;
     color: #fff;
-    margin: 0px 20px;
+    margin: 0;
+    padding: 0;
 }
 
 a{
-    color: red;
+    color: white;
+    text-decoration: none;
 }
 
 nav{
     display: flex;
-    gap: 30px;
+    gap: 50px;
     justify-content: flex-end;
-    margin-bottom: 20px;
+    margin: 20px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+}
+nav .active {
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    color: rgb(36, 200, 36);
+}
+
+header {
+    height: 400px;
+    width: 100%;
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://images.pexels.com/photos/349610/pexels-photo-349610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-position: center ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+
+}
+
+h1 {
+    color: rgb(36, 200, 36);
+   font-family: 'Montserrat', sans-serif;
+   font-size: 54px;
+   letter-spacing: 5px;
+}
+h2 {
+    font-size: 23px;
+    letter-spacing: 5px;    
+}
+
+
+
+section {
+    margin: 50px 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap:40px;
+}
+
+
+.recipeBox {
+    cursor: pointer;
+    width: 400px;
+    transition: .5s ease;
+    box-shadow: 0 0 88px 0 rgba(0, 0, 0, 0.1607843137);
+    background-color: white;
+    color:black;
+}
+
+.recipeBox:hover{
+    transform: scale(1.1);  
+}
+
+.upperPic img{
+    height: 40%;
+    width: 100%;
+}
+.recipeBox h3{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+button{
+    background:rgb(36, 200, 36);
+    border: none;
+    border-radius: 12px;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
 }
