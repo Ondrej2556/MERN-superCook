@@ -7,7 +7,7 @@
     "server": "nodemon server.js"
   },
   "keywords": [],
-  "author": "Ondřej Zahradník & Patrik Vachník",
+  "author": "Ondřej Zahradník",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.21"

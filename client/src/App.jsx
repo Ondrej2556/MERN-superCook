@@ -1,5 +1,7 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Home from './pages/Home'
 import CreateRecipe from './pages/CreateRecipe'
 import SavedRecipes from './pages/SavedRecipes'
@@ -20,6 +22,7 @@ function App() {
         <Route path='/recipe/:id' element={<RecipePage />} />
         <Route path='*' element={<>Page not found 404</>}/>
       </Routes>
+      <ToastContainer />
     </Router>
   )
 }

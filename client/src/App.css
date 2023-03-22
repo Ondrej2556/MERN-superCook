@@ -47,7 +47,7 @@ h1 {
    font-size: 54px;
    letter-spacing: 5px;
 }
-h2 {
+header h2 {
     font-size: 23px;
     letter-spacing: 5px;    
 }
@@ -90,7 +90,28 @@ button{
     background:rgb(36, 200, 36);
     border: none;
     border-radius: 12px;
-    width: 150px;
+    width: 100px;
     height: 40px;
     cursor: pointer;
 }
+
+.filterInput{
+    color: rgb(36, 200, 36);
+    border: 2px solid rgb(36, 200, 36);
+    border-radius: 10px;
+    padding: 10px 25px;
+    background: transparent;
+    max-width: 190px;
+}
+
+.filterInput:active {
+    box-shadow: 2px 2px 15px rgb(36, 200, 36) inset;
+}
+
+/*  RECIPE PAGE */
+.recipeBoxik{
+    display: flex;
+    gap: 50px;
+    padding: 0px 100px 50px 100px;
+}
+

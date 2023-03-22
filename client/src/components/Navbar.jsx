@@ -2,7 +2,7 @@ import { useState } from "react"
 import { NavLink } from "react-router-dom"
 
 const Navbar = () => {
-    const [ isLoggedIn, setIsLoggedIn ] = useState(true)
+    const [ isLoggedIn, setIsLoggedIn ] = useState(false)
     
     return(
         <>
@@ -15,7 +15,7 @@ const Navbar = () => {
             </nav>
         ) : (
             <nav>
-                <NavLink to='/' className="active">Home</NavLink>
+                <NavLink to='/'>Home</NavLink>
                 <NavLink to='/auth'>Login / Register</NavLink>
             </nav>
         )}
