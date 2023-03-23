@@ -33,7 +33,7 @@ const loginUser = async (req, res) => {
             token: jwt.sign({ id: user._id }, process.env.JWT_SECRET)
         })
     } catch (error) {
-        res.send(error.message)
+        res.json(error.message)
     }
 }
 

@@ -115,3 +115,92 @@ button{
     padding: 0px 100px 50px 100px;
 }
 
+
+/* AUTH PAGE CSS */
+.loginForm{
+    display: flex;
+    justify-content: center;
+    gap: 20%;
+}
+
+.card {
+    width: 190px;
+    height: 300px;
+    background: #F4F6FB;
+    border: 1px solid white;
+    box-shadow: 5px 5px 15px 0px rgb(36, 200, 36, 0.5 );
+  }
+  
+  .form {
+    padding: 25px;
+  }
+  
+  .card_header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .card svg {
+    color: rgb(36, 200, 36);
+    margin-bottom: 20px;
+    margin-right: 5px;
+  }
+  
+  .form_heading {
+    padding-bottom: 20px;
+    font-size: 21px;
+    color: rgb(36, 200, 36);
+  }
+  
+  .field {
+    padding-bottom: 10px;
+  }
+  
+  .input {
+    border-radius: 5px;
+    background-color: #e9e9f7;
+    padding: 5px;
+    width: 100%;
+    color: #7a7ab3;
+    border: 1px solid #dadaf7
+  }
+  
+  .input:focus-visible {
+    outline: 1px solid #aeaed6;
+  }
+  
+  .input::placeholder {
+    color: #bcbcdf;
+  }
+  
+  label {
+    color: rgb(36, 200, 36);
+    font-size: 14px;
+    display: block;
+    padding-bottom: 4px;
+  }
+  
+.formButton {
+    background-color: rgb(36, 200, 36);
+    margin-top: 10px;
+    font-size: 14px;
+    padding: 7px 12px;
+    height: auto;
+    font-weight: 500;
+    color: white;
+    border: none;
+}
+  
+.formButton:hover {
+    background-color: rgb(36, 200, 36);
+}
+
+
+/* Create recipe page css */
+.recipeForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+}

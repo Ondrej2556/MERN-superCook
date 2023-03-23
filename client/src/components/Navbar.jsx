@@ -1,17 +1,21 @@
-import { useState } from "react"
-import { NavLink } from "react-router-dom"
+import { useState,useEffect } from "react"
+import { NavLink, Link } from "react-router-dom"
 
-const Navbar = () => {
-    const [ isLoggedIn, setIsLoggedIn ] = useState(false)
-    
+const Navbar = () => {    
+    const user = JSON.parse(localStorage.getItem(`user`))
+
+    const logoutUser = () => {
+        localStorage.removeItem(`user`)
+        location.reload()
+    }
     return(
         <>
-        {isLoggedIn ? (
+        {user ? (
              <nav>
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='/createRecipe'>Create recipe</NavLink>
                 <NavLink to='/savedRecipes'>Saved Recipes</NavLink>
-                <NavLink to='/auth'>Login / Register</NavLink>
+                <Link onClick={logoutUser}>Logout</Link>
             </nav>
         ) : (
             <nav>
@@ -19,7 +23,10 @@ const Navbar = () => {
                 <NavLink to='/auth'>Login / Register</NavLink>
             </nav>
         )}
-       
+       <header>
+                <h1>SuperCook</h1>
+                <h2>All Recipes In One Place</h2>
+        </header>
         </>
     )
 }

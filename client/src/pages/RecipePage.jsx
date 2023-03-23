@@ -5,11 +5,6 @@ const RecipePage = () => {
 
     return(
         <div>
-            <header>
-                <h1>SuperCook</h1>
-                <h2>All Recipes In One Place</h2>
-            </header>
-
             <RecipeInfo recipeID={recipeID}/>
         </div>
     )
