@@ -28,6 +28,7 @@ const loginUser = async (req, res) => {
 
 
         res.status(200).json({
+            id: user._id,
             name: user.name,
             email: user.email,
             token: jwt.sign({ id: user._id }, process.env.JWT_SECRET)
@@ -65,11 +66,46 @@ const registerUser = async (req, res) => {
             throw new Error('Something went wrong. Try again later...')
         }
         res.status(201).json({
+            id: newUser._id,
             name: newUser.name,
             email: newUser.email,
             token: jwt.sign({ id: newUser._id }, process.env.JWT_SECRET)
         })
     } catch (error) {
+        res.send(error.message)
+    }
+}
+
+
+//@desc get one user for profile from token from middleware
+//@route /api/users/getMe
+//@method GET
+//@access private
+const getOneUser = async (req,res) => {
+    try {
+        res.status(200).json(req.user)
+    } catch (error) {
+        res.send(error.message)
+    }
+}
+
+
+//@desc get user recipes
+//@route /api/users/getUserRecipes
+//@method GET
+//@access private
+const getAllUserRecipes = async (req , res) => {
+    try {
+        const recipes = await Recipe.find({author: req.user._id})
+
+        if(!recipes) {
+            res.status(500)
+            throw new Error("Something went wrong. Try again later...")
+        }
+
+        res.status(200).json(recipes);
+    } catch (error) {
+        console.log(error)
         res.send(error.message)
     }
 }
@@ -128,4 +164,4 @@ const saveOrUnsaveRecipe = async (req, res) => {
     }
 }
 
-module.exports = {loginUser, registerUser, saveOrUnsaveRecipe }
+module.exports = {loginUser, registerUser, getOneUser, saveOrUnsaveRecipe, getAllUserRecipes }

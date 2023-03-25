@@ -8,6 +8,7 @@ import SavedRecipes from './pages/SavedRecipes'
 import Auth from './pages/Auth'
 import Navbar from './components/Navbar'
 import RecipePage from './pages/RecipePage'
+import Profile from './pages/Profile';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/savedRecipes' element={<SavedRecipes />}/>
         <Route path='/auth' element={<Auth />} />
         <Route path='/recipe/:id' element={<RecipePage />} />
+        <Route path='/profile' element={<Profile />} />
         <Route path='*' element={<>Page not found 404</>}/>
       </Routes>
       <ToastContainer />

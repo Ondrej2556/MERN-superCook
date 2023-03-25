@@ -1,21 +1,20 @@
 import { useState, useEffect } from "react";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
 
 const Auth = () => {
   const [formData, setFormData] = useState({});
   const [isRegistered, setIsRegistered] = useState(true);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const user = JSON.parse(localStorage.getItem(`user`))
-  useEffect(()=>{
-    if(user) {
-        navigate(`/`)
+  const user = JSON.parse(localStorage.getItem(`user`));
+  useEffect(() => {
+    if (user) {
+      navigate(`/`);
     }
-  }, [])
+  }, []);
 
   const handleInput = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -23,43 +22,46 @@ const Auth = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    if(!formData.email || !formData.password || !formData.name) {
-        toast.error("All fields are mandatory")
+    if (!formData.email || !formData.password || !formData.name) {
+      toast.error("All fields are mandatory");
     } else {
-        try {
-            const response = await axios.post(`http://localhost:3001/api/users/register`, formData)
+      try {
+        const response = await axios.post(
+          `http://localhost:3001/api/users/register`,
+          formData
+        );
 
-            if(response) {
-                localStorage.setItem(`user`,JSON.stringify(response.data))
-                navigate(`/`)
-                location.reload()
-            }
-            
-        } catch (error) {
-            toast.error(error.response.data)
+        if (response) {
+          localStorage.setItem(`user`, JSON.stringify(response.data));
+          navigate(`/`);
+          location.reload();
         }
+      } catch (error) {
+        toast.error(error.response.data);
+      }
     }
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    if(!formData.email || !formData.password ) {
-        toast.error("All fields are mandatory")
+    if (!formData.email || !formData.password) {
+      toast.error("All fields are mandatory");
     } else {
-        try {
-            const response = await axios.post(`http://localhost:3001/api/users/login`, formData)
+      try {
+        const response = await axios.post(
+          `http://localhost:3001/api/users/login`,
+          formData
+        );
 
-            if(response) {
-                localStorage.setItem(`user`,JSON.stringify(response.data))
-                navigate(`/`)
-                location.reload()
-            }
-            
-        } catch (error) {
-            toast.error(error.response.data)
+        if (response) {
+          localStorage.setItem(`user`, JSON.stringify(response.data));
+          navigate(`/`);
+          location.reload();
         }
+      } catch (error) {
+        toast.error(error.response.data);
+      }
     }
-    
   };
   return (
     <>
@@ -75,7 +77,7 @@ const Auth = () => {
           style={{ textAlign: "center" }}
           onClick={() => {
             setIsRegistered(!isRegistered);
-            setFormData({})
+            setFormData({});
             document.querySelector(".form").reset();
           }}
         >

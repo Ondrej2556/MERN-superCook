@@ -7,12 +7,15 @@ import { useNavigate } from "react-router-dom";
 function RecipeInfo({ recipeID }) {
   const [recipeInfo, setRecipeInfo] = useState("");
   const [isRecipeSaved, setIsRecipeSaved] = useState(false);
+  const [isAuthor, setIsAuthor] = useState(false)
   const user = JSON.parse(localStorage.getItem(`user`));
   const navigate = useNavigate();
 
   useEffect(() => {
     getRecipeData();
-    getIfRecipeSaved();
+    if (user) {
+      getIfRecipeSaved();
+    }
   }, []);
 
   const getIfRecipeSaved = async () => {
@@ -39,7 +42,10 @@ function RecipeInfo({ recipeID }) {
       const response = await axios.get(
         `http://localhost:3001/api/recipes/recipe/${recipeID}`
       );
-      setRecipeInfo(response.data);
+      setRecipeInfo(response.data);      
+      if(user && response.data.author === user.id) {
+        setIsAuthor(true);
+      }
     } catch (error) {
       console.error(error);
       toast.error(error.response.data);
@@ -47,7 +53,6 @@ function RecipeInfo({ recipeID }) {
   };
 
   const handleSaveRecipe = async () => {
-    setIsRecipeSaved(!isRecipeSaved);
     try {
       const response = await axios.put(
         `http://localhost:3001/api/users/handleRecipe/${recipeID}`,
@@ -57,10 +62,34 @@ function RecipeInfo({ recipeID }) {
         }
       );
       toast.success(response.data);
+      location.reload()
     } catch (error) {
       console.log(error);
     }
   };
+
+  const deleteRecipe = async () => {
+    const confirmation = confirm('Are you sure you want to delete')
+    
+    if(confirmation) {
+      try {
+        const response = await axios.delete(
+          `http://localhost:3001/api/recipes/${recipeID}`,
+          {
+            headers: { Authorization: `Bearer ${user.token}` },
+          }
+        );
+          if(response) {
+            toast.success("recipe deleted");
+            navigate('/')
+          }
+      } catch (error) {
+        console.log(error);
+        toast.error(error.response.data)
+      }
+    }
+  }
+
   return (
     <div className="recipeInfo">
       <h1 style={{ display: "flex", justifyContent: "center" }}>
@@ -88,6 +117,7 @@ function RecipeInfo({ recipeID }) {
               <button onClick={handleSaveRecipe}>
                 {isRecipeSaved ? "Unsave" : "save"}
               </button>
+              {isAuthor&&<button style={{ backgroundColor:"red", marginLeft:"25px"}} onClick={deleteRecipe}> Delete Recipe</button>}
             </>
           ) : (
             <button onClick={() => navigate("/auth")}>

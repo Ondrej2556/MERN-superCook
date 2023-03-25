@@ -47,10 +47,8 @@ const CreateRecipe = () => {
         );
 
         if (response) {
-          toast.success("Recipe succesfully crated.");
-          setTimeout(() => {
-            navigate("/");
-          }, 3000);
+          toast.success("Recipe succesfully created.");
+          navigate("/");
         }
       } catch (error) {
         console.log(error);
@@ -109,6 +107,8 @@ const CreateRecipe = () => {
 
         <button onClick={handleCreateRecipe}>Create recipe</button>
       </form>
+      <br />
+      <br />
     </>
   );
 };
