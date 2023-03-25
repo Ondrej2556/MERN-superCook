@@ -96,6 +96,7 @@ const saveOrUnsaveRecipe = async (req, res) => {
         }
 
 
+        //Save here
         if(!user.savedRecipes.toString().includes(recipeID)){
             const savedRecipes = [...user.savedRecipes, recipeID]
 
@@ -108,6 +109,7 @@ const saveOrUnsaveRecipe = async (req, res) => {
 
             res.status(201).json("Recepi saved")
         } else{
+            //Unsave here
             const savedRecipes = user.savedRecipes.filter((id) => id.toString() !== recipeID)
             
             const updatedUser = await User.findByIdAndUpdate({_id: user._id}, {savedRecipes}, {new: true})

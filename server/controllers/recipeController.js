@@ -127,7 +127,7 @@ const savedRecipes = async (req, res) => {
             throw new Error('User doesnt exist.')
         }
         
-        const savedRecipes = await Recipe.find({author: req.user._id})
+        const savedRecipes = await Recipe.find({_id: user.savedRecipes})
 
         if(!savedRecipes){
             res.status(500)
