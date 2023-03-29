@@ -10,8 +10,8 @@ function RecipeBox({ recipes }) {
     return recipe.title.toLowerCase().includes(recipeFilter.toLowerCase());
   });
   return (
-    <section>
-      <div className="searchBar">
+    <>
+      <div style={{textAlign:"center"}}>
         <h2>Search for recipes</h2>
         <input
           type="text"
@@ -21,6 +21,7 @@ function RecipeBox({ recipes }) {
           onChange={(e) => setRecipeFilter(e.target.value)}
         />
       </div>
+    <section>
       {filteredRecipeArray.length > 0 ? (
         filteredRecipeArray.map((recipe) => (
           <div
@@ -29,22 +30,12 @@ function RecipeBox({ recipes }) {
             key={recipe._id}
           >
             <div className="upperPic">
-              <img src={recipe.imageURL} alt={recipe.title} />
+              <img src={recipe.imageURL} alt={recipe.title} height="300px" />
             </div>
             <h3>{recipe.title}</h3>
             <hr width="50%" />
-            <p style={{ padding: "0px 10px" }}>{recipe.description}</p>
-            <hr />
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                margin: "0px 10px",
-              }}
-            >
+            <div className="counterBox">
               <StarCounter rating={recipe.authorLiked} color="black" />
-              <button>Recipe</button>
             </div>
           </div>
         ))
@@ -52,6 +43,7 @@ function RecipeBox({ recipes }) {
         <h1>There are no recipes...</h1>
       )}
     </section>
+    </>
   );
 }
 

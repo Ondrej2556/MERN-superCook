@@ -8,7 +8,7 @@ function StarCounter({ rating, color }) {
 
   return (
     <h2 style={{ display: "flex", gap: "5px" }}>
-      Rating:{" "}
+      Rating:
       {stars.map((star, i) => (
         <span style={{ marginTop: "2px" }} key={i}>
           <AiFillStar color={color} />

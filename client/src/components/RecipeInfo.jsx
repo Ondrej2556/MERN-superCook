@@ -96,7 +96,7 @@ function RecipeInfo({ recipeID }) {
         {recipeInfo.title}
       </h1>
       <div className="recipeBoxik">
-        <img src={recipeInfo.imageURL} alt={recipeInfo.title} width="50%" />
+        <img src={recipeInfo.imageURL} alt={recipeInfo.title} width="50%" height="350px" />
         <div>
           <h2>Description</h2>
           <p>{recipeInfo.description}</p>
