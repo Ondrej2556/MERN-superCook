@@ -36,7 +36,10 @@ const CreateRecipe = () => {
       !recipe.authorLiked
     ) {
       toast.error("All fields are mandatory");
-    } else {
+    } else if(recipe.authorLiked < 1 || recipe.authorLiked > 5) {
+      toast.error("Stars can be only in range of 1 to 5")
+    }
+    else {
       try {
         const response = await axios.post(
           "http://localhost:3001/api/recipes",

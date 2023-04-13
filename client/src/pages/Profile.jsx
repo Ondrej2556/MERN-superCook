@@ -22,14 +22,19 @@ function Profile() {
   }, []);
 
   const getUser = async () => {
-    try {
-      const response = await axios.get(API_URL+'getMe', {
-        headers: { Authorization: `Bearer ${user.token}` },
-      });
-      setUserInfo(response.data);
-    } catch (error) {
-      console.log(error);
-      toast.error(error.response.data);
+    if (user) {
+      setUserInfo(user)
+    } else {
+
+      try {
+        const response = await axios.get(API_URL+'getMe', {
+          headers: { Authorization: `Bearer ${user.token}` },
+        });
+        setUserInfo(response.data);
+      } catch (error) {
+        console.log(error);
+        toast.error(error.response.data);
+      }
     }
   };
 
@@ -56,7 +61,7 @@ function Profile() {
           <h1>Profile</h1>
           <h2>name: {userInfo.name}</h2>
           <h2>email: {userInfo.email}</h2>
-          <h2>Member since: {userInfo.createdAt}</h2>
+          <h2>Member since: {userInfo.createdAt?.split("T")[0]}</h2>
           <button onClick={logoutUser}>Logout</button>
         </div>
         <div>
