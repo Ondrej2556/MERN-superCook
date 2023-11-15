@@ -10,7 +10,7 @@ const {connect} = require('./config/db')
 app.use(express.json())
 app.use(cors())
 app.use(cors({
-    origin: 'https://mern-super-cook-server.vercel.app'
+    origin: 'https://mern-super-cook-server-bl908izf3-ondrej2556.vercel.app'
   }));
 
 //connect db
