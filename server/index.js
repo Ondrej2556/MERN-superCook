@@ -14,7 +14,7 @@ app.use(cors())
 connect()
 
 
-app.get("/", (res) => res.json("Hello world!"))
+app.get("/", (req, res) => res.json("Hello world!"))
 
 //Route for recipes
 app.use('/api/recipes', recipeRoute)
