@@ -3,9 +3,9 @@ const app = express();
 var cors = require('cors')
 require('dotenv').config()
 const colors = require('colors');
-const recipeRoute = require('../routes/recipeRoute')
-const userRoute = require('../routes/userRoute')
-const {connect} = require('../config/db')
+const recipeRoute = require('./routes/recipeRoute')
+const userRoute = require('./routes/userRoute')
+const {connect} = require('./config/db')
 
 app.use(express.json())
 app.use(cors())
