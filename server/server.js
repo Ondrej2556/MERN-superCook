@@ -8,13 +8,7 @@ const userRoute = require('./routes/userRoute')
 const {connect} = require('./config/db')
 
 app.use(express.json())
-app.use(cors(
-  {
-    origin: ["https://mern-super-cook.vercel.app/"],
-    method: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  }
-));
+app.use(cors())
 
 //connect db
 connect()
