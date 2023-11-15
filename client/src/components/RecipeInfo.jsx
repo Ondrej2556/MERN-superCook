@@ -10,18 +10,20 @@ function RecipeInfo({ recipeID }) {
   const [isAuthor, setIsAuthor] = useState(false)
   const user = JSON.parse(localStorage.getItem(`user`));
   const navigate = useNavigate();
+  import.meta.env.BASE_API_URL
 
   useEffect(() => {
     getRecipeData();
     if (user) {
       getIfRecipeSaved();
     }
+    
   }, []);
 
   const getIfRecipeSaved = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/recipes/saved",
+        `${import.meta.env.VITE_API_URL}recipes/saved`,
         {
           headers: { Authorization: `Bearer ${user.token}` },
         }
@@ -40,7 +42,7 @@ function RecipeInfo({ recipeID }) {
   const getRecipeData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/recipes/recipe/${recipeID}`
+        `${import.meta.env.VITE_API_URL}recipes/recipe/${recipeID}`
       );
       setRecipeInfo(response.data);      
       if(user && response.data.author === user.id) {
@@ -55,7 +57,7 @@ function RecipeInfo({ recipeID }) {
   const handleSaveRecipe = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:3001/api/users/handleRecipe/${recipeID}`,
+        `${import.meta.env.VITE_API_URL}users/handleRecipe/${recipeID}`,
         {},
         {
           headers: { Authorization: `Bearer ${user.token}` },
@@ -74,7 +76,7 @@ function RecipeInfo({ recipeID }) {
     if(confirmation) {
       try {
         const response = await axios.delete(
-          `http://localhost:3001/api/recipes/${recipeID}`,
+          `${import.meta.env.VITE_API_URL}recipes/${recipeID}`,
           {
             headers: { Authorization: `Bearer ${user.token}` },
           }

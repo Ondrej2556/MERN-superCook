@@ -42,7 +42,7 @@ const CreateRecipe = () => {
     else {
       try {
         const response = await axios.post(
-          "http://localhost:3001/api/recipes",
+          `${import.meta.env.VITE_API_URL}recipes`,
           recipe,
           {
             headers: { Authorization: `Bearer ${user.token}` },

@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 const SavedRecipes = () => {
   const [recipeArray, setRecipeArray] = useState([]);
-  const API_URL = "http://localhost:3001/api/recipes/saved";
+  
+  const API_URL = `${import.meta.env.VITE_API_URL}recipes/saved` 
+
   const user = JSON.parse(localStorage.getItem(`user`));
   const navigate = useNavigate();
 

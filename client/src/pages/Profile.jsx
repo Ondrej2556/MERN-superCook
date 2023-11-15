@@ -7,8 +7,8 @@ import RecipeBox from "../components/RecipeBox";
 function Profile() {
   const user = JSON.parse(localStorage.getItem(`user`));
   const navigate = useNavigate();
-  const API_URL = "http://localhost:3001/api/users/";
-
+  const API_URL = `${import.meta.env.VITE_API_URL}users/`
+   
   const [userInfo, setUserInfo] = useState({});
   const [recipeArray, setRecipeArray] = useState([]);
 
