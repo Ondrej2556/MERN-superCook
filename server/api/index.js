@@ -25,3 +25,5 @@ app.use('/api/users', userRoute)
 // Server port
 const PORT = process.env.SERVER_PORT || 8080
 app.listen(PORT, ()=>console.log(`Server running & listening on port: ${PORT}`))
+
+module.exports = app;
