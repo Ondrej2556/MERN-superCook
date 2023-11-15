@@ -13,7 +13,9 @@ app.use(cors());
 //connect db
 connect()
 
-app.get("/", console.log("Hello world"))
+app.get("/", (res) => {
+  res.json("Hello world")
+})
 
 //Route for recipes
 app.use('/api/recipes', recipeRoute)
